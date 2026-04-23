@@ -9,19 +9,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
-    mcp-hub.url = "github:ravitemer/mcp-hub";
-    plugins-mcphub-nvim = {
-      url = "github:ravitemer/mcphub.nvim";
-    };
-
-    plugins-codecompanion-nvim = {
-      url = "github:olimorris/codecompanion.nvim";
-      flake = false;
-    };
-    plugins-copilotchat-nvim = {
-      url = "github:CopilotC-Nvim/CopilotChat.nvim";
-      flake = false;
-    };
     # see :help nixCats.flake.inputs
     # If you want your plugin to be loaded by the standard overlay,
     # i.e. if it wasnt on nixpkgs, but doesnt have an extra build step.
@@ -79,7 +66,6 @@
         general = with pkgs; [
           fd
           ripgrep
-          inputs.mcp-hub.packages.${system}.mcp-hub
           uv
         ];
       };
@@ -87,9 +73,6 @@
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
         gitPlugins = with pkgs.neovimPlugins; [
-          mcphub-nvim
-          codecompanion-nvim
-          copilotchat-nvim
         ];
 
         general = with pkgs.vimPlugins; [
@@ -123,7 +106,6 @@
 
           # copilot
           copilot-lua
-          copilot-cmp
 
 
           # snippets
@@ -136,7 +118,6 @@
           mini-icons # file and folder icons
           catppuccin-nvim
           lualine-nvim
-          nvim-navic # additional LSP status line info
           statuscol-nvim # status column
           neoscroll-nvim # smooth scrolling
         ];

@@ -1,22 +1,7 @@
-local navic = require('nvim-navic')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('lspconfig').bashls.setup{
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    navic.attach(client, bufnr)
-  end
-}
+vim.lsp.config('bashls', { capabilities = capabilities })
+vim.lsp.config('pylsp', { capabilities = capabilities })
+vim.lsp.config('terraformls', { capabilities = capabilities })
 
-require('lspconfig').pylsp.setup{
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    navic.attach(client, bufnr)
-  end
-}
-require('lspconfig').terraformls.setup{
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    navic.attach(client, bufnr)
-  end
-}
+vim.lsp.enable({ 'bashls', 'pylsp', 'terraformls' })

@@ -1,4 +1,3 @@
-local navic = require('nvim-navic')
 ---Indicators for special modes,
 ---@return string status
 local function extra_mode_status()
@@ -23,10 +22,6 @@ end
 require('lualine').setup {
   globalstatus = true,
   sections = {
-    lualine_c = {
-      -- nvim-navic
-      { navic.get_location, cond = navic.is_available },
-    },
     lualine_z = {
       -- (see above)
       { 'location',
